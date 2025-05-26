@@ -1,5 +1,7 @@
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readFileSync } from 'node:fs'
+import { env } from 'node:process'
 
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -22,7 +24,7 @@ export default buildConfig({
   collections: [Users, Media],
   globals: [Rates],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: env.NODE_ENV === 'production' ? readFileSync("/run/secrets/payload-secret") : '',
   typescript: {
     outputFile: resolve(_dirname, 'payload-types.ts'),
   },
