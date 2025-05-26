@@ -1,7 +1,7 @@
 ARG NODE_VERSION="18"
-ARG ALPINE="3.21"
+ARG ALPINE_VERSION="3.21"
 
-FROM node:${NODE_VERSION}-alpine${ALPINE} AS base
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 
 RUN apk add --no-cache libc6-compat
 
@@ -39,7 +39,6 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Remove this line if you do not have this folder
-COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
