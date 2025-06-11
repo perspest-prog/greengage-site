@@ -1,4 +1,5 @@
-import React from 'react'
+import { Baskervville } from 'next/font/google'
+
 import './styles.css'
 
 export const metadata = {
@@ -6,11 +7,16 @@ export const metadata = {
   title: 'Payload Blank Template',
 }
 
+const baskervville = Baskervville({
+  weight: '400',
+  subsets: ['latin'],
+})
+
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
+    <html lang="en" className={baskervville.className}>
       <body>
         <main>{children}</main>
       </body>

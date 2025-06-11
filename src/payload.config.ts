@@ -24,7 +24,10 @@ export default buildConfig({
   collections: [Users, Media],
   globals: [Rates],
   editor: lexicalEditor(),
-  secret: env.NODE_ENV === 'production' ? readFileSync('/run/secrets/payload-secret', { encoding: 'utf-8' }) : '',
+  secret:
+    env.NODE_ENV === 'production'
+      ? readFileSync('/run/secrets/payload-secret', { encoding: 'utf-8' })
+      : '123213',
   typescript: {
     outputFile: resolve(_dirname, 'payload-types.ts'),
   },

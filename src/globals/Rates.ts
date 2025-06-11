@@ -3,6 +3,9 @@ import type { GlobalConfig } from 'payload'
 export const Rates: GlobalConfig = {
   slug: 'rates',
   label: 'Курсы я ебал блять',
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       type: 'number',
